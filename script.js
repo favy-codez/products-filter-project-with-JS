@@ -93,39 +93,46 @@ const data = [
             ...allCats.filter((item,i) => {
                 return allCats.indexOf(item) === i 
             })];
-            // console.log(categories);
-        };  
-    setCategories ()
+         // console.log(categories);
+             // add categories Container
+            categoriesContainer.innerHTML = categories.map((cat)=>
+            `
+                <span class="cat">${cat}</span>
+            `
+            ).join(" ");
+            // add event listeners to each category using the parent container
+            categoriesContainer.addEventListener("click", (e)=>{
+                const selectedCat = e.target.textContent;
 
-  
-//     categoriesContainer.innerHTML = categories
-//       .map(
-//         (cat) =>
-//           `
-//         <span class="cat">${cat}</span>
-//       `
-//       )
-//       .join("");
-  
-//     categoriesContainer.addEventListener("click", (e) => {
-//       const selectedCat = e.target.textContent;
-  
-//       selectedCat === "All"
-//         ? displayProducts(data)
-//         : displayProducts(data.filter((item) => item.cat === selectedCat));
-//     });
-//   };
-  
-//   const setPrices = () => {
-//     const priceList = data.map((item) => item.price);
-//     const minPrice = Math.min(...priceList);
-//     const maxPrice = Math.max(...priceList);
-  
-//     priceRange.min = minPrice;
-//     priceRange.max = maxPrice;
-//     priceRange.value = maxPrice;
-//     priceValue.textContent = "$" + maxPrice;
-  
+                // using ternary operator to create conditions 
+                selectedCat === "All" 
+                ? displayProducts(data) 
+                : displayProducts(data.filter((item) => item.cat === selectedCat));
+            });
+        };  
+        // range section
+        const setPrices = () => {
+            const priceList = data.map((item) => item.price);
+            // console.log(priceList);
+            // use math method to pick minimum and maximum
+            // Math.min([2,3])=NaN so  Math.min(...[2,3])
+            const minPrice = Math.min(...priceList);
+            const maxPrice = Math.max(...priceList);
+
+            priceRange.min = minPrice;
+            priceRange.max = maxPrice;
+            priceRange.value = maxPrice;
+            priceValue.textContent = "$" + maxPrice;
+
+            priceRange.addEventListener("input", (e)=>{
+                // to filter price
+                priceValue.textContent = "$" + e.target.value;
+                displayProducts(data.filter((item)=>item.price <= e.target.value))
+            })
+        };
+        setCategories ()
+        setPrices()
+
 //     priceRange.addEventListener("input", (e) => {
 //       priceValue.textContent = "$" + e.target.value;
 //       displayProducts(data.filter((item) => item.price <= e.target.value));
