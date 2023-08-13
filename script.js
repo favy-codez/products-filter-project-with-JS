@@ -61,31 +61,42 @@ const data = [
             <span class="priceText">$${product.price}</span>
     </div>
     `
+    // use join to not see commas
     ).join("");
   };
 
   displayProducts(data);
-  
-//   searchInput.addEventListener("keyup", (e) => {
-//     const value = e.target.value.toLowerCase();
-  
-//     if (value) {
-//       displayProducts(
-//         data.filter((item) => item.name.toLowerCase().indexOf(value) !== -1)
-//       );
-//     } else {
-//       displayProducts(data);
-//     }
-//   });
-  
-//   const setCategories = () => {
-//     const allCats = data.map((item) => item.cat);
-//     const categories = [
-//       "All",
-//       ...allCats.filter((item, i) => {
-//         return allCats.indexOf(item) === i;
-//       }),
-//     ];
+
+    //search bar functionalities, keyup to listen for keyboard interactions, e listening for events
+    searchInput.addEventListener('keyup', (e) => {
+        // convert input to lowercase
+        // console.log(e.target.value); === displays search bar input
+        const value = e.target.value.toLowerCase();
+
+        // if value exist, display our product and if product does not exist, display all items 
+        if (value){
+            displayProducts(data.filter(
+                // if the indexOf value is -1 it means it doesn't exist . if its not -1 return those items
+                (item) => item.name.toLowerCase().indexOf(value) !== -1)
+                );
+        }else{
+            displayProducts(data);
+        }
+    });
+    //   categories section
+    const setCategories = () => {
+        const allCats =  data.map((item) => item.cat);
+        // use i (indexOf) to avoid repetition
+        const categories = [
+            // created an array and used spread operator to add ALL in front of the other catedories
+            "All",
+            ...allCats.filter((item,i) => {
+                return allCats.indexOf(item) === i 
+            })];
+            // console.log(categories);
+        };  
+    setCategories ()
+
   
 //     categoriesContainer.innerHTML = categories
 //       .map(
