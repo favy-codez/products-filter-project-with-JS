@@ -17,13 +17,19 @@ body {
     border: 1px solid gray;
   }
   
-  h1{
+h1{
     font-size: 30px;
     color: #555;
     font-weight: 300;
-  }
+}
   
-  
+.header{
+    font-size: 30px;
+    color: #555;
+    font-weight: 00;
+    text-align: center;
+}
+
   .cats{
     display: flex;
     flex-direction: column;
