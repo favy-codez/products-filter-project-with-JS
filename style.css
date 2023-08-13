@@ -1,58 +1,66 @@
-body{
-    background-color: #927df1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+    font-family: "Open Sans", sans-serif;
   }
   
-  .container{
+  .container {
+    display: flex;
+    padding: 50px;
+  }
+  
+  .leftMenu {
+    flex: 1;
+  }
+  
+  .search{
+    padding: 10px;
+    width: 200px;
+    border: 1px solid gray;
+  }
+  
+  h1{
+    font-size: 30px;
+    color: #555;
+    font-weight: 300;
+  }
+  
+  
+  .cats{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 50px;
+    gap: 10px;
   }
   
-  .top{
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  }
-  
-  .arrow{
-    height: 150px;
+  .cat{
     cursor: pointer;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px;
   }
   
-  .right{
-    transform: rotate(180deg);
+  .content {
+    flex: 4;
   }
   
-  .frame{
-    width: 800px;
-    height: 500px;
-    overflow: hidden;
-  }
-  
-  .slider{
+  .products{
     display: flex;
-    transition: all 1s ease;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   
-  .image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .bottom{
+  .product{
+    width: 350px;
     display: flex;
+    flex-direction: column;
     gap: 30px;
+    align-items: center;
   }
   
-  .button{
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 1px solid white;
-    cursor: pointer;
+  img{
+    width: 150px;
+    height: 250px;
+    object-fit: contain;
+  }
+  
+  .name{
+    font-weight: 300;
   }
